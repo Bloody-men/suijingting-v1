@@ -4,8 +4,6 @@
 <head>
 <meta charset="utf-8">
 <title>jQuery拖拽和缩放图片功能</title>
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
-
 <style type="text/css">
 			body{background-color: #505566;}
 			* {
@@ -23,52 +21,6 @@
 				overflow: hidden;
 				background-color: #2d2d2d;
 			}
-			/*.drag-action {
-				position: absolute;
-				right: 10px;
-				top: 10px;
-				padding: 5px 0;
-				width: 50px;
-				background-color: rgba(0,0,0,0.5);
-				border-radius: 2px;
-				text-align: center;
-				z-index: 2;
-			}
-			.scale-big,
-			.scale-small {
-				width: 14px;
-				height: 14px;
-				vertical-align: middle;
-				cursor: pointer;
-			}
-			.direction {
-				width: 40px;
-				margin-top: 5px;
-				vertical-align: middle;
-			}
-			.arrow {
-				position: absolute;
-				border: 1px solid transparent;
-				width: 10px;
-				height: 10px;
-				cursor: pointer;
-			}
-			.up {
-				top: 33px;
-				left: 19px;
-			}
-			.down {
-				bottom: 7px;
-				left: 19px;
-			}
-			.left {
-				top: 45px;
-				left: 7px;
-			}
-			.right {
-				top: 45px;
-				right: 7px;
-			}*/
 .drag-box {
 position: relative;
 }
@@ -131,35 +83,7 @@ font-size: .23rem;
 		<img src="https://p.pstatp.com/origin/fee200024663a73cc126" alt="拖拽图" class="drag-img">
 	</div>
 </div>
-
-<div class="footer">
-	<a class="list" href="https://www.hdk.net/">
-		<img src="">
-		<p>讲解列表</p>
-	</a>
-	<div class="map_vg_info">
-		<h2>上海枫泾古镇中文语音讲解（由小鹿导游提供）-中文</h2>
-		<div class="joinus">
-			<p>杨柳导游</p>
-			<p>20处讲解</p>
-			<p>2.2k次播放</p>
-		</div>
-		<span>购买须知</span>
-	</div>
-	<div class="footer_tips">
-		
-	</div>
-
-</div>
-
-
-
-
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-
-
-
-
 <script type="text/javascript">
 	function DragScale(bar,ele,params){this.bar=bar
 this.ele=ele
