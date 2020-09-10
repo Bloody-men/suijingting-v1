@@ -159,18 +159,7 @@ font-size: .23rem;
 
 
 
-<script>
-	// 获取手机屏幕的宽／高，计算出html设置的font-size 参数
-    (function(){
-        var calc = function(){
-            var docElement = document.documentElement;
-            var clientWidthValue = docElement.clientWidth > 667 ? 667 : docElement.clientWidth;
-            docElement.style.fontSize = 50*(clientWidthValue/375) + 'px';
-        }
-        calc();
-        window.addEventListener('resize',calc);
-    })();
-</script>
+
 <script type="text/javascript">
 	function DragScale(bar,ele,params){this.bar=bar
 this.ele=ele
