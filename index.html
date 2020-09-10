@@ -70,20 +70,23 @@ font-size: .23rem;
 </head>
 <body>
 <div class="drag">
-	<!-- <div class="drag-action">
-	<img src="./images/scale-big.png" alt="+" class="scale-big">
-	<img src="./images/scale-small.png" alt="-" class="scale-small"><br />
-	<img src="./images/drag.png" alt="方向" class="direction">
-	<div class="arrow up" data-arrow="moveUp"></div>
-	<div class="arrow right" data-arrow="moveRight"></div>
-	<div class="arrow down" data-arrow="moveDown"></div>
-	<div class="arrow left" data-arrow="moveLeft"></div>
-	</div> -->
 	<div class="drag-box">
 		<img src="https://p.pstatp.com/origin/fee200024663a73cc126" alt="拖拽图" class="drag-img">
 	</div>
 </div>
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script>
+	// 获取手机屏幕的宽／高，计算出html设置的font-size 参数
+    (function(){
+        var calc = function(){
+            var docElement = document.documentElement;
+            var clientWidthValue = docElement.clientWidth > 667 ? 667 : docElement.clientWidth;
+            docElement.style.fontSize = 50*(clientWidthValue/375) + 'px';
+        }
+        calc();
+        window.addEventListener('resize',calc);
+    })();
+</script>
 <script type="text/javascript">
 	function DragScale(bar,ele,params){this.bar=bar
 this.ele=ele
