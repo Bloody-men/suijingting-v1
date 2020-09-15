@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>淇河天然太极图景区地图</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .drag-box{width: 100vh;}
+        .drag-img{height: 100%;}
+		.sjt-btn{text-align:center;margin-top:100px;width:100%;position:fixed;bottom: 60px;}
+		.sjt-btn>a{text-decoration: none;font-size: 80%;}
+    </style>
+</head>
+<body>
+<div class="drag-box">
+    <img src="https://p.pstatp.com/origin/fee200024663a73cc126" alt="拖拽图" class="drag-img">
+</div>
+<div class="sjt-btn"><a href="http://suijingting.oneinall.cn/app/index.php?i=1&c=entry&do=lesson&m=fy_lessonv2&id=1698">返回首页</a></div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    // 获取手机屏幕的宽／高，计算出html设置的font-size 参数
+    (function(){
+        var calc = function(){
+            var docElement = document.documentElement;
+            var clientWidthValue = docElement.clientWidth > 667 ? 667 : docElement.clientWidth;
+            docElement.style.fontSize = 50*(clientWidthValue/375) + 'px';
+        }
+        calc();
+        window.addEventListener('resize',calc);
+    })();
+</script>
+<script type="text/javascript">
+    function DragScale(bar,ele,params){this.bar=bar
+this.ele=ele
+this.params=params||{zoomVal:1,minZoomVal:0.2,left:0,top:0,currentX:0,currentY:0,moveVal:50,wheelVal:1200,flag:false}}
+DragScale.prototype.scale=function(mark){var wheelVal=[event.wheelDelta,this.params.wheelVal,-this.params.wheelVal][mark]
+this.params.zoomVal+=wheelVal/1200
+if(this.params.zoomVal<this.params.minZoomVal)this.params.zoomVal=this.params.minZoomVal
+this.ele.css("transform","scale("+this.params.zoomVal+")")}
+DragScale.prototype.getCss=function(key){return this.ele.css(key);}
+DragScale.prototype.drag=function(callback){var _that=this
+if(this.getCss("left")!=="auto"){this.params.left=this.getCss("left")}
+if(this.getCss("top")!=="auto"){this.params.top=this.getCss("top")}
+this.bar.on("mousedown",function(event){_that.params.flag=true;if(!event){event=window.event;_that.bar.onselectstart=function(){return false;}}
+var e=event;_that.params.currentX=e.clientX;_that.params.currentY=e.clientY;});document.onmouseup=function(){_that.params.flag=false;if(_that.getCss("left")!=="auto"){_that.params.left=_that.getCss("left");}
+if(_that.getCss("top")!=="auto"){_that.params.top=_that.getCss("top");}};document.onmousemove=function(event){var e=event?event:window.event;if(_that.params.flag){var nowX=e.clientX;var nowY=e.clientY;var disX=nowX-_that.params.currentX;var disY=nowY-_that.params.currentY;_that.ele.css("left",parseInt(_that.params.left)+disX+"px");_that.ele.css("top",parseInt(_that.params.top)+disY+"px");if(typeof callback=="function"){callback((parseInt(_that.params.left)||0)+disX,(parseInt(_that.params.top)||0)+disY);}
+if(event.preventDefault){event.preventDefault();}
+return false;}}}
+DragScale.prototype.moveUp=function(){this.ele.css("top",parseInt(this.params.top)-this.params.moveVal+"px");this.params.top=parseInt(this.params.top)-this.params.moveVal}
+DragScale.prototype.moveDown=function(){this.ele.css("top",parseInt(this.params.top)+this.params.moveVal+"px");this.params.top=parseInt(this.params.top)+this.params.moveVal}
+DragScale.prototype.moveLeft=function(){this.ele.css("left",parseInt(this.params.left)-this.params.moveVal+"px");this.params.left=parseInt(this.params.left)-this.params.moveVal}
+DragScale.prototype.moveRight=function(){this.ele.css("left",parseInt(this.params.left)+this.params.moveVal+"px");this.params.left=parseInt(this.params.left)+this.params.moveVal}
+</script>
+<script type="text/javascript">
+    var drag = $(".drag-img")
+    var dragImg = new DragScale(drag, drag)
+    // 拖动
+    dragImg.drag()
+    // 滚轮
+    $(".drag-box").on("mousewheel", function() {
+        dragImg.scale(0)
+    })
+    // 放大
+    $(".scale-big").click(function() {
+        dragImg.scale(1)
+    })
+    // 缩小
+    $(".scale-small").click(function() {
+        dragImg.scale(2)
+    })
+    // 上下左右点击
+    $(".arrow").click(function() {
+        dragImg[$(this).data("arrow")]()
+    })
+</script>
+</html>
